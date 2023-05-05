@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Too{% endblock title %}
+
+    
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/to_log.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+
+    <style>
+        .name_pass input {
+    outline: none;
+    border: none;
+    background-color: rgba(245, 245, 220, 0);
+    font-size: 17px;
+    /* padding-left: 30px; */
+}
+    .name_pass i{
+    color:chocolate;
+}
+.name_pass hr{
+    color: rgba(240, 248, 255, 0.703);
+}
+.name_pass input::placeholder {
+    color: rgb(62, 62, 61);
+}
+    </style>
+    <div class="container">
+        <div class="box">
+            <div class="title">
+                <h1>Login</h1>
+                <hr style="color:rgba(255, 255, 255, 0.59)">
+            </div>
+            <form action="{% url 'to_log' %}" method="POST">
+                {% csrf_token %}
+                {% if messages %}
+                {% for i in messages %}
+                <p>{{i}}</p>
+                    {% endfor %}
+                {% endif %}
+
+                <div class="name_pass">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input placeholder="firstname" type="text" name="username" id="">
+                    <hr>
+
+                    <!-- <i class="fa-solid fa-envelope"></i>
+                    <input placeholder="lastname" type="text" name="usersurname" id="">
+                    <hr> -->
+
+                    <!-- <i class="fa-solid fa-envelope"></i>
+                    <input placeholder="Email" type="email" name="username" id="">
+                    <hr> -->
+                    <i class="fa-sharp fa-solid fa-key"></i>
+                    <input placeholder="New Password" type="password" name="password1" id="">
+                    <hr>
+
+                    <i class="fa-sharp fa-solid fa-key"></i>
+                    <input placeholder="Confirm Password" type="password" name="password2" id="">
+                    <hr>
+                </div>
+                <div class="the_rest">
+                    <!-- <a href="#">Forget your password?</a> -->
+                    <div class="login"><input type="submit" value="Login"></div>
+                    <!-- <p style="color: aliceblue;">Not a user? <a href="#">Sign-up</a></p> -->
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock content %}
